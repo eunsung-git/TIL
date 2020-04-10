@@ -1,0 +1,197 @@
+[실습 예제 1]
+1. gapminder = pd.read_csv('../data/gapminder.tsv', sep='\t') 
+위 코드를 수행한 후, 
+gapmider 변수에 저장된 컬럼 중 'year' 컬럼을 기준으로 'lifeExp' 컬럼값에 대한 평균을 구하고자 한다.
+코드를 기술하시오.
+
+## pandas library 불러오기
+import pandas as pd
+
+## data 불러오기
+gapminder = pd.read_csv('gapminder.tsv', sep='\t') 
+
+## 결측값 확인    => 'year','lifeExp' 결측값 없음 
+gapminder.info()
+#<class 'pandas.core.frame.DataFrame'>
+#RangeIndex: 1704 entries, 0 to 1703
+#Data columns (total 6 columns):
+#country      1704 non-null object
+#continent    1704 non-null object
+#year         1704 non-null int64
+#lifeExp      1704 non-null float64
+#pop          1704 non-null int64
+#gdpPercap    1704 non-null float64
+#dtypes: float64(2), int64(2), object(2)
+#memory usage: 80.0+ KB
+
+## 연도별 lifeExp 평균 추출
+gapminder.groupby('year')[['lifeExp']].mean()
+#	    lifeExp
+# year	
+#1952	49.057620
+#1957	51.507401
+#1962	53.609249
+#1967	55.678290
+#1972	57.647386
+#1977	59.570157
+#1982	61.533197
+#1987	63.212613
+#1992	64.160338
+#1997	65.014676
+#2002	65.694923
+#2007	67.007423
+
+
+
+2. kmeans와 knn 알고리즘에 대해 설명하고, 적용되는 분야를 기술하시오.(자유롭게)
+k-means 알고리즘은 data를 k개의 cluster로 묶어, 각 cluster와 거리 차이의 분산을 최소화하는 방식으로 동작한다. 
+자율학습의 일종으로, 레이블이 달려 있지 않은 입력 data에 레이블을 달아주는 역할을 한다. 
+이러한 특성으로 인해 k-means 알고리즘은 시장 분할, 컴퓨터 비전, 지질통계학, 천문학 및 농업 등 광범위한 분야에 적용될 수 있으며,
+주로 데이터 전처리 용도로 많이 쓰인다. 
+knn 알고리즘은 추천 시스템에서 사용자나 아이템의 비슷함을 측정하는데 사용된다. 
+분류 대상으로부터 가까운 거리에 있는 k개의 점을 선택한  후, k개의 점들이 가장 많이 속한 그룹을 찾아내는 원리이다. 
+지도학습의 한 종류로서 '근접이웃 알고리즘'이라고도 한다.
+얼굴 인식, 영화 추천, 유전자 데이터 패턴 식별 등에 활용된다. 
+
+
+3. 베이즈 이론을 기반으로 베이지안 필터기가 만들어지는 과정을 기술하시오.(자유롭게)
+베이즈 이론은, 모든 사건은 서로 독립 사건이라고 가정하고 
+사후확률을 '우도*사전확률/주변우도' 공식을 이용하여 확률을 구하는 이론이다.
+추가적으로, 라플라스 추정량을 활용하여 분자가 0이 되는 것을 방지하기 위해 
+일률적으로 1을  더하는 경우도 있다.
+베이즈 이론을 통해 얻은 확률 모델과 결정규칙을 조합하여 필터기가  만들어지는데, 
+스팸 분류기 모델을 예로 들어 베이지안 필터기 생성 과정을 설명하자면, 
+메일 제목 데이터를 불용어 제거, 숫자 제거, 특수문자 제거, 소문자 전환 등 전처리한 후,
+corpus를 생성한다. 그리고 corpus를 token화하여 DTM 구조로 변환한다. 
+test set과 train set을 분리한 후, 각 set별 label을 생성한다.
+train set에서 최소 n번 나타나는 단어를 추출한 후, DTM을 필터링한다.
+범주형 데이터에 대한 훈련을 위해 YES/NO 값으로 바꾸는 함수를 따로 생성한다.
+열 단위로 함수를 적용시킨 후, naive bayesian 모델을 생성한다.
+모델을 통해 예측한 값을 test set과 crosstable()을 이용해 비교분석한다. 
+
+
+
+
+[실습 예제 2]
+IMDB 데이터셋 사용
+- 리뷰 데이터 전처리(불용어, 특수문자, 숫자 등 제거, 어근 동일화 등)
+- DTM 생성
+- train/test data set 분리
+- 열의 크기가 매우 크므로 최소 10번 이상 등장한 단어 대상으로 할 것
+
+# data 불러오기
+> library(readr)
+> imdb_raw<-read_csv('C:/Users/student/Desktop/공부/멀캠TIL/dataset/R/dataset_for_ml/dataset_for_ml/IMDB Dataset.csv')
+
+# 10000개의 data만 추출
+> imdb_raw<-imdb_raw[1:10000,]
+
+# chr type의 sentiment col을 factor type으로 변환 후 저장
+> imdb_raw$sentiment<-factor(imdb_raw$sentiment)
+
+> table(imdb_raw$sentiment)
+negative positive 
+    4972     5028 
+
+# 8000개의 train set, 2000개의 test set으로 data 분리
+> set.seed(123)
+> train_sample<-sample(10000,8000)
+> imdb_train<-imdb_raw[train_sample,]
+> imdb_test<-imdb_raw[-train_sample,]
+
+# corpus 생성
+> library(tm)
+> imdb_corpus_train<-VCorpus(VectorSource(imdb_train$review))
+> imdb_corpus_test<-VCorpus(VectorSource(imdb_test$review))
+
+# token화 및 text 전처리
+> imdb_dtm_train<-DocumentTermMatrix(imdb_corpus_train,
+                                    control=list(tolower=TRUE,removeNumbers=TRUE,
+                                                 stopwords=TRUE,removePunctuation=TRUE,
+                                                 stemming=TRUE))
+> imdb_dtm_test<-DocumentTermMatrix(imdb_corpus_test,
+                                   control=list(tolower=TRUE,removeNumbers=TRUE,
+                                                stopwords=TRUE,removePunctuation=TRUE,
+                                                stemming=TRUE))
+
+# label 생성
+> imdb_train_labels<-imdb_train$sentiment
+> imdb_test_labels<-imdb_test$sentiment
+
+# 최소 100번 이상 등장한 단어 찾기
+> imdb_freq_words<-findFreqTerms(imdb_dtm_train,100)
+> imdb_dtm_freq_train<-imdb_dtm_train[,imdb_freq_words]
+> imdb_dtm_freq_test<-imdb_dtm_test[,imdb_freq_words]
+
+> convert_counts<-function(x){
+  x<-ifelse(x>0,'yes','no')
+}
+
+# column 단위로 함수 적용
+> imdb_train<-apply(imdb_dtm_freq_train,MARGIN=2,convert_counts)
+> imdb_test<-apply(imdb_dtm_freq_test,MARGIN=2,convert_counts)
+
+# Naive Bayesian 모델 생성 
+> library(e1071)
+> imdb_classifier<-naiveBayes(imdb_train, imdb_train_labels)
+> imdb_test_pred<-predict(imdb_classifier,imdb_test)
+
+# 교차분석
+> library(gmodels)
+> CrossTable(imdb_test_pred,imdb_test_labels,
+             prop.t=FALSE,prop.r=FALSE,
+             dnn=c('predicted','actual'))
+
+   Cell Contents
+|---------------------------|
+|                            N |
+| Chi-square contribution |
+|              N / Col Total |
+|---------------------------|
+Total Observations in Table:  2000 
+
+             | actual 
+   predicted |  negative |  positive | Row Total | 
+-------------|-----------|-----------|-----------|
+    negative |       787 |       142 |       929 | 
+             |   236.340 |   229.814 |           | 
+             |     0.798 |     0.140 |           | 
+-------------|-----------|-----------|-----------|
+    positive |       199 |       872 |      1071 | 
+             |   205.004 |   199.344 |           | 
+             |     0.202 |     0.860 |           | 
+-------------|-----------|-----------|-----------|
+Column Total |       986 |      1014 |      2000 | 
+             |     0.493 |     0.507 |           | 
+-------------|-----------|-----------|-----------|
+
+
+# lacpace 추정량 옵션 추가 후 교차분석
+> imdb_classifier2<-naiveBayes(imdb_train, imdb_train_labels,laplace=1)
+> imdb_test_pred2<-predict(imdb_classifier2,imdb_test)
+> CrossTable(imdb_test_pred2,imdb_test_labels,
+           prop.t=FALSE,prop.r=FALSE,
+           dnn=c('predicted','actual'))
+
+   Cell Contents
+|-------------------------|
+|                       N |
+| Chi-square contribution |
+|           N / Col Total |
+|-------------------------|
+Total Observations in Table:  2000 
+
+             | actual 
+   predicted |  negative |  positive | Row Total | 
+-------------|-----------|-----------|-----------|
+    negative |       788 |       142 |       930 | 
+             |   236.814 |   230.275 |           | 
+             |     0.799 |     0.140 |           | 
+-------------|-----------|-----------|-----------|
+    positive |       198 |       872 |      1070 | 
+             |   205.829 |   200.145 |           | 
+             |     0.201 |     0.860 |           | 
+-------------|-----------|-----------|-----------|
+Column Total |       986 |      1014 |      2000 | 
+             |     0.493 |     0.507 |           | 
+-------------|-----------|-----------|-----------|
