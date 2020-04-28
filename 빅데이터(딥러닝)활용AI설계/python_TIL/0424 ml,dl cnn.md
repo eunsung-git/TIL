@@ -48,10 +48,11 @@ es = EarlyStopping(monitor='val_loss', patience=10)
 
 ------------------------------------------------
 
-## generator 선언
+## generator 객체 생성 & 옵션 지정 
 from keras.preprocessing.image import ImageDataGenerator
 
 train_gen = ImageDataGenerator(rescale=1./255)
+# flow_from_directory(directory, target_size=(,), class_mode='', batch_size= )
 train_gen = train_gen.flow_from_directory('C:\\Users\\student\\Desktop\\dataset\\python\\image_data\\train', 
                              target_size=(24,24), batch_size=3, class_mode='categorical')
 
@@ -59,19 +60,21 @@ test_gen = ImageDataGenerator(rescale=1./255)
 test_gen = test_gen.flow_from_directory('C:\\Users\\student\\Desktop\\dataset\\python\\image_data\\test', 
                              target_size=(24,24), batch_size=3, class_mode='categorical')
 
-## cnn model 설정
-# 크기(24,24), 채널 3, 필터 3*3, 필터개수 32, relu
+## cnn model 구성
+# Conv -> Conv -> Pool-> ... -> Flatten -> Dense -> Dense
 model=Sequential()
 model.add(Conv2D(32, kernel_size=(3,3), activation='relu', input_shape=(24,24,3)))
-# 필터 3*3, 필터개수 64, relu
+
 model.add(Conv2D(64, kernel_size=(3,3), activation='relu'))
-# maxpool 2*2
+
 model.add(MaxPooling2D(pool_size=(2,2)))
-# 플래튼 => Dense(128개 뉴런 출력) => Dense(softmax)
+
 model.add(Flatten())
 model.add(Dense(128, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
+
+## model 학습
 model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 model.fit_generator(train_gen, steps_per_epoch=15, epochs=50, validation_data=test_gen, validation_steps=5)
