@@ -122,14 +122,6 @@ print('evaluation : ', eval)
 
 update
 
-#### update 1 tensorflow_weight 초기화
-
-```python
-dfs
-```
-
-
-
 #### update 2 keras_weight 초기화
 
 ```python
