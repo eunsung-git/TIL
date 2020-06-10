@@ -1,7 +1,6 @@
 ### django 설치 및 기본
 
 ```bash
-## git bash  
 # 가상환경 만들기
 $ python -m venv venv
 
@@ -16,27 +15,29 @@ $ django-admin startproject 프로젝트명 경로
 $ django-admin startproject intro .
 # . -> 현재 폴더
 # .. -> 상위 폴더
-.
-.
-.
-# vs code 실행
-$ code .
+
 
 # interpreter 설정
-ctrl + shift + p  -> 만든 가상환경 선택
+ctrl + shift + p  -> select interpreter -> 만든 가상환경 선택
+
+# terminal 껐다가 다시 키면 가상환경 자동 실행
 
 # server 실행
 $ python manage.py runserver
+
+# language 설정
+settings.py -> line 106 LANGUAGE_CODE 에 'ko-kr' 입력
+            -> line 1-8 TIME_ZONE 에 'Asia/Seoul' 입력
+
+# server 잠시 닫고, ctrl+c
 
 # 새로운 app 만들기
 $ python manage.py startapp app이름
 $ python manage.py startapp pages
 
 # app 등록
-settings.py -> line 33 INSTALLED_APPS 에 추가
+settings.py -> line 33 INSTALLED_APPS 에 app 이름 추가
 
-# language 설정
-settings.py -> line 107 LANGUAGE_CODE 에 입력
 ```
 
 
@@ -180,6 +181,50 @@ ex) django/intro/templates/base.html
     <img src="{% static 'tools/spongebob.png' %}" alt="">
 
 {% endblock %}
+
+```
+
+
+
+### 관리자 기능
+
+```python
+$ python manage.py createsuperuser
+ 이름/password 지정
+    
+$ python manage.py runser 후 http://127.0.0.1:8000/admin/ 
+
+로그인
+
+### class 등록
+
+## 해당app/해당class/admin.py 에 추가
+# from . models import class이름
+> from . models import Article
+
+# admin.site.register(class이름)
+> admin.site.register(Article)
+
+
+### admin customizing
+> class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['id', 'title', 'created_at']
+
+> admin.site.register(Article, ArticleAdmin)
+
+```
+
+
+
+### library 설치
+
+```python
+$ pip install library이름
+
+# settings.py line 33 INSTALLED_APPS 맨 마지막줄에 library 이름 추가
+
+cf) library이름이 django-extensions 라면,
+INSTALLED_APPS 에 추가 시, 'django_extensions'로 입력
 
 ```
 
