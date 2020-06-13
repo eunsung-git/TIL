@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h1>Article Detail</h1>
+
+<ul>
+    <li>PK : {{ article.pk }}</li>
+    <li>제목 : {{ article.title }}</li>
+    <li>내용 : {{ article.content }}</li>
+    <li>생성시각 : {{ article.created_at }}</li>
+    <li>수정시각 : {{ article.updated_at }}</li>
+</ul>
+
+<!-- data 목록 (GET) -->
+<a href="/articles/index/">목록</a>
+
+<!-- data 수정 (GET) -->
+<a href="/articles/edit/{{ article.pk}}/">수정</a>
+
+<!-- data 삭제 -->
+<form action="/articles/delete/{{ article.pk }}/" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="삭제">
+</form>
+
+{% endblock %}

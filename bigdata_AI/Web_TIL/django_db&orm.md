@@ -1,7 +1,10 @@
-### database 설계
+### 0610_ORM
+
+#### database 설계
 
 ```bash
 ## 해당 app/models.py 에 table 작성
+class Article(models.Model):
 
 ## 작성한 모델의 migration(설계도) 파일 생성
 $ python manage.py makemigrations
@@ -20,7 +23,7 @@ $ python manage.py migrate
 
 
 
-### Django Shell
+#### Django Shell
 
 ```python
 --- terminal에서 작성 -------
@@ -125,6 +128,21 @@ article.delete()
 >>> article 
 <Article: 5번 글 - First : Bye> # 새로운 번호를 부여받음
         
+
+```
+
+### 0613_CRUD
+
+#### web에서 DB 활용_ 게시판 만들기
+
+```python
+### 게시물 form / 게시물 작성 / 게시물 목록 확인
+
+### method="GET" -> return render()
+### method="POST" -> return redirect()
+
+
+
 
 ```
 

@@ -1,43 +1,87 @@
+## 처음부터 설정 시
+
+```bash
+1. python 가상환경
+
+$ python -m venv venv
+
+2. python 가상환경 활성화
+- Ctrl + Shift + p -> Select Interpreter -> 'venv' 선택
+or
+$ source venv/Scripts/activate
+
+
+3. django 설치
+$ pip install django==2.2.13
+
+4. django project 생성
+$ django-admin startproject crud .
+
+
+5. django app 생성
+$ python manage.py startapp articles
+
+
+6. django app 등록
+- settings.py -> INSTALLED_APPS 에 app 이름 추가
+
+7. 언어/시간 설정
+- settings.py -> LANGUAGE_CODE 에 'ko-kr' 입력
+- settings.py -> TIME_ZONE 에 'Asia/Seoul' 입력
+
+8. base.html 설정
+- settings.py -> TEMPLATES -> DIRS
+> os.path.join(BASE_DIR, 'templates')
+
+- 해당 project 폴더 (가장 바깥)/templates 폴더/base.html 생성
+
+9. urls.py 분리
+- 해당 app -> urls.py 생성
+- 기존 project 폴더 -> urls.py 에
+> from django.urls import path, include
+> path('app이름/', include('app이름.urls')),
+
+```
+
+--------------------------------------------------------------------------------------
+
+
+
 ### django 설치 및 기본
 
 ```bash
-# 가상환경 만들기
+## 1 가상환경 만들기
 $ python -m venv venv
 
-# 가상환경 활성화
+## 2 가상환경 활성화
 $ source venv/Scripts/activate
+or
+ctrl + shift + p  -> select interpreter -> 만든 가상환경 'venv' 선택
 
-# django package 설치
+## 3 django package 설치
 $ pip install django==2.2.13
 
-# django project 생성
+## 4 django project 생성
 $ django-admin startproject 프로젝트명 경로
 $ django-admin startproject intro .
 # . -> 현재 폴더
 # .. -> 상위 폴더
 
 
-# interpreter 설정
-ctrl + shift + p  -> select interpreter -> 만든 가상환경 선택
-
-# terminal 껐다가 다시 키면 가상환경 자동 실행
-
-# server 실행
-$ python manage.py runserver
-
-# language 설정
-settings.py -> line 106 LANGUAGE_CODE 에 'ko-kr' 입력
-            -> line 1-8 TIME_ZONE 에 'Asia/Seoul' 입력
-
-# server 잠시 닫고, ctrl+c
-
-# 새로운 app 만들기
+## 5 새로운 app 만들기
 $ python manage.py startapp app이름
 $ python manage.py startapp pages
 
-# app 등록
+## 6 app 등록
 settings.py -> line 33 INSTALLED_APPS 에 app 이름 추가
 
+
+## 7 language / time 설정
+settings.py -> line 106 LANGUAGE_CODE 에 'ko-kr' 입력
+            -> line 1-8 TIME_ZONE 에 'Asia/Seoul' 입력
+            
+## 8 server 실행
+$ python manage.py runserver
 ```
 
 
@@ -80,6 +124,7 @@ urlpatterns = [
 
 cf) 기존 urls.py 파일에 추가할 코드
 > from django.urls import path, include
+# path('app이름/', include('app이름.urls')),
 > path('pages/', include('pages.urls')),
 
 cf) 기존 urls.py 파일에서 삭제할 코드
@@ -229,4 +274,8 @@ INSTALLED_APPS 에 추가 시, 'django_extensions'로 입력
 ```
 
 
+
+폴더 생성
+
+폴더 안에서 code 열기
 
