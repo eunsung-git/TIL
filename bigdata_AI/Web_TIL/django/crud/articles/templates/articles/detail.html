@@ -13,13 +13,13 @@
 </ul>
 
 <!-- data 목록 (GET) -->
-<a href="/articles/index/">목록</a>
+<a href="{% url 'articles:index' %}">목록</a>
 
 <!-- data 수정 (GET) -->
-<a href="/articles/edit/{{ article.pk}}/">수정</a>
+<a href="{% url 'articles:edit' article.pk %}">수정</a>
 
 <!-- data 삭제 -->
-<form action="/articles/delete/{{ article.pk }}/" method="POST">
+<form action="{% url 'articles:delete' article.pk %}" method="POST">
     {% csrf_token %}
     <input type="submit" value="삭제">
 </form>

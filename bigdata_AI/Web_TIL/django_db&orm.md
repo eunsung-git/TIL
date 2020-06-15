@@ -131,16 +131,62 @@ article.delete()
 
 ```
 
-### 0613_CRUD
+### 0613-0615_CRUD
 
-#### web에서 DB 활용_ 게시판 만들기
+#### 게시판 만들기
 
 ```python
-### 게시물 form / 게시물 작성 / 게시물 목록 확인
+#### 게시물 form / 게시물 작성 / 게시물 목록 확인
 
-### method="GET" -> return render()
-### method="POST" -> return redirect()
+## method="GET" -> return render()
+## method="POST" -> return redirect()
 
+------------------------------------------
+
+#### 좀 더 django스럽게 변경
+
+urls.py에 app_name = '해당app이름'  추가
+> app_name = 'articles'
+
+# path 하나하나에 name 설정
+urls.py의 urlpatterns에서
+path('index/', views.index), → path('index/', views.index, name='index'),
+....
+
+## 모든 .html에서 link 변경
+<a href="/articles/new/">New Article</a> → <a href="{% url 'articles:new' %}">New Article</a>
+
+<a href="/articles/detail/{{ article.pk }}/">{{ article.title }}</a> → <a href="{url 'articles:detail' article.pk %}">{{ article.title }}</a>
+.........
+
+## views.py 에서 모든 redirect 함수를
+return redirect(f'/articles/detail/{article.pk}/') → return redirect('articles:detail', article.pk)
+..................
+
+### 1. GET /articles/
+> path('', views.index), → path('index/', views.index, name='index'),
+
+### 2. GET /articles/new/ + 3. POST /articles/new/
+# 'new' 와 'create' 주소 합체
+> path('new/', views.new, name='new'),
+> # path('create/', views.create, name='create'),
+# create 함수를 new 함수에 넣기
+# new.html 수정
+
+# url 주소 = form action 주소 -> action 주소 생략 가능
+
+### 4. GET /articles/detail/1/
+> path('detail/<int:pk>/', views.detail, name='detail'), -> path('<int:pk>/', views.detail, name='detail'),
+
+### 5. POST /articles/1/delete/
+> path('<int:pk>/delete/', views.delete, name='delete'),
+
+### 6. GET /articles/1/edit/ + 7. POST/articles/update/
+# 'edit' 와 'update' 주소 합체
+> path('<int:pk>/edit/', views.edit, name='edit'),
+> # path('update/', views.update, name='update'),
+# create 함수를 new 함수에 넣기
+# new.html 수정
 
 
 

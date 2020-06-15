@@ -5,13 +5,15 @@
 <h1>Article Index</h1>
 
 <!-- 새로운 게시물 작성 바로가기  -->
-<a href="/articles/new/">New Article</a>
+<!-- <a href="/articles/new/">New Article</a> -->
+<a href="{% url 'articles:new' %}">New Article</a>
 
 <!-- 작성된 게시물 목록 및 게시물 바로가기 -->
 <ul>
     {% for article in articles %}
         <li>
-            <a href="/articles/detail/{{ article.pk }}/">{{ article.title }}</a>
+            <!-- <a href="/articles/detail/{{ article.pk }}/">{{ article.title }}</a> -->
+            <a href="{% url 'articles:detail' article.pk %}">{{ article.title }}</a>
         </li>
     {% endfor%}
 </ul>
