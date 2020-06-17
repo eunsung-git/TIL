@@ -10,6 +10,7 @@ $ python -m venv venv
 or
 $ source venv/Scripts/activate
 
+terminal 종료 후 다시 실행
 
 3. django 설치
 $ pip install django==2.2.13
@@ -37,9 +38,70 @@ $ python manage.py startapp articles
 
 9. urls.py 분리
 - 해당 app -> urls.py 생성
-- 기존 project 폴더 -> urls.py 에
+- 기존 project 폴더 -> urls.py 복사
+- admin 관련 코드 지우고 저장
+
+- 기존 project urls.py에서 아래 세 줄 추가
 > from django.urls import path, include
 > path('app이름/', include('app이름.urls')),
+
+10. database 생성
+- 해당 app models.py에서 class 생성
+> class Article(models.Model):
+    title = models.CharField(max_length=10)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+terminal에서
+> python manage.py makemigrations
+> python manage.py migrate
+
+11. 관리자 설정
+해당 app의 admin.py에서
+# from .models import class이름
+# admin.site.register(class이름)
+> from .models import Article
+> class ArticleAdmin(admin.ModelAdmin):
+	list_display = ('pk','title','created_at','updated_at')
+> admin.site.register(Article, ArticleAdmin)
+
+- terminal에서 관리자 계정 생성
+$ python manage.py createsuperuser
+
+12. server 실행
+$ python manage.py runserver
+
+13. page 만들기
+- 해당 app 안에 templates/articles 폴더 추가
+- 해당 app의 urls.py에서 추가 후 path 작성
+> from . import views
+> app_name = 'app이름'
+
+- views.py에 
+> from .models import modelclass이름
+- 그리고 함수 추가
+
+
+- 해당 html 파일 작성
+{% extends 'base.html' %}
+{% block body %}
+
+{% endblock %}
+
+14. form 생성
+- 해당app 안에 forms.py 만든 후
+> from django import forms
+> class ArticleForm(forms.Form):
+    title = forms.CharField()
+    content = forms.CharField()
+
+- 해당 app의 views.py에 추가
+> from .forms import formclass이름
+
+- 해당 함수 작성
+
+
 
 ```
 
