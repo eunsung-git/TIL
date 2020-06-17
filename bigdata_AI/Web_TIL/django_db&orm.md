@@ -25,7 +25,7 @@ $ python manage.py migrate
 
 #### Django Shell
 
-```python
+```shell
 --- terminal에서 작성 -------
 
 # from 해당app이름.models import table이름
@@ -189,6 +189,32 @@ return redirect(f'/articles/detail/{article.pk}/') → return redirect('articles
 # new.html 수정
 
 
+```
+
+
+
+#### 0617 게시판 댓글 달기
+
+```bash
+# 1. Create
+>>> comment = Comment()
+>>> comment.content = '댓글기능추가'
+>>> comment.article = article
+>>> comment.save()
+    
+# 2) Read
+# 2-1. 게시글로부터 댓글 불러오기
+>>> article = Article.objects.get(pk=1)
+>>> comments = article.comment_set.all()
+# 2-2. 댓글 조건으로 불러오기
+>>> article = Article.objects.get(pk=1)
+>>> Comment.objects.filter(article_id=1) (= Comment.objects.filter(article=article) )
+
+# 3. 댓글로부터 게시물 불러오기
+>>> comment = Comment.objects.get(pk=1)
+>>> article = comment.article
+>>> article.title
+>>> article.content
 
 ```
 

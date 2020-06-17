@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Article
-from .forms import ArticleForm
+from .models import Article, Comment
+from .forms import ArticleForm, CommentForm
 
 # Create your views here.
 def index(request):
@@ -45,8 +45,14 @@ def detail(request, pk):  # urls.py의 path에서 쓰는 변수 추가
     # 1. pk에 해당하는 data 불러오기
     article = Article.objects.get(pk=pk)
 
+    # 댓글작성 양식 불러오기
+    comment_form = CommentForm()
+
+
+
     context = {
         'article': article,
+        'comment_form': comment_form,
     }
     return render(request, 'articles/detail.html', context)
 
@@ -93,3 +99,56 @@ def edit(request, pk):
         'form': form,
     }
     return render(request, 'articles/edit.html', context)
+
+def comments_new(request, article_pk):  # POST
+    # 1. 요청이 POST인지 점검
+    if request.method == 'POST':
+        # 2. Form에 data 넣기 (유효성 검사)
+        form = CommentForm(request.POST)
+        # 3. 유효성 검사 시행
+        if form.is_valid():
+            # 4. data 저장
+            comment = form.save(commit=False)
+            # 4-1. article 정보 주입
+            comment.article_id = article_pk
+            comment.save()
+    # 5. 생성된 댓글 확인
+    return redirect('articles:detail', article_pk)
+
+def comments_delete(request, article_pk, pk):  # POST
+    # 1. 요청이 POST인지 점검
+    if request.method == 'POST':
+        # 2. pk로 삭제하려는 data 불러오기
+        comment = Comment.objects.get(pk=pk)
+        # 3. 삭제
+        comment.delete()
+    # 4. 삭제 확인
+    return redirect('articles:detail', article_pk)
+
+def comments_edit(request, article_pk, pk):  # GET, POST
+    # 수정할 data 가져오기
+    comment = Comment.objects.get(pk=pk)
+    # 요청이 POST인지 GET인지 점검
+    if request.method == 'POST':
+        # 수정
+        # 1. form에 data 넣기
+        form = CommentForm(request.POST, instance=comment)
+        # 2. 유효성 검사
+        if form.is_valid():
+            # 3. data 저장
+            comment = form.save()
+            # 4. 수정된 댓글 확인
+            return redirect('articles:detail', article_pk)
+
+    else:
+        # 수정 폼 보여주기
+        # 1. form class 초기화(생성)
+        form = CommentForm(instance=comment)
+
+
+    
+    context = {
+        'form': form,
+    }
+    return render(request, 'articles/comments_edit.html', context)
+
