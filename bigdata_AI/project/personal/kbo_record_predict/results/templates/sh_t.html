@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let's predict 2020 KBO League!!!</title>
+    <style>
+        body {
+            width: 500px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding-top: 300px;
+            background: url("../static/image/logo_bg.png");
+            background-repeat: repeat;}
+        div {
+		    display : block;
+		    margin : 0 auto;}
+        img { display: block; margin: 0px auto; }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="/sh_t" method="get">
+            <select name="team2_name">
+                <option selected="selected" value="Team_list">Team_list</option>
+                <option value="두산">두산</option>
+                <option value="롯데">롯데</option>
+                <option value="삼성">삼성</option>
+                <option value="키움">키움</option>
+                <option value="한화">한화</option>
+                <option value="KIA">KIA</option>
+                <option value="KT">KT</option>
+                <option value="LG">LG</option>
+                <option value="NC">NC</option>
+                <option value="SK">SK</option>
+            </select> <br>
+            <select name="team2_record">
+                <option selected="selected" value="Record_list">Record_list</option>
+                <option value="AVG">AVG(타율)</option>
+                <option value="G">G(경기)</option>
+                <option value="PA">PA(타석)</option>
+                <option value="AB">AB(타수)</option>
+                <option value="R">R(득점)</option>
+                <option value="H">H(안타)</option>
+                <option value="2B">2B(2루타)</option>
+                <option value="3B">3B(3루타)</option>
+                <option value="HR">HR(홈런)</option>
+                <option value="TB">TB(루타)</option>
+                <option value="RBI">RBI(타점)</option>
+                <option value="SAC">SAC(희생번트)</option>
+                <option value="SF">SF(희생플라이)</option>
+            </select><br>
+{#            <input type="text" size=50 height=100 placeholder="Team Name" name=team_name><br>#}
+{#            <input type="text" size=50 height=100 placeholder="Team's Record" name=team_record><br>#}
+            <input type='submit' value='Predict'>
+        </form>
+    </div>
+</body>
+</html>

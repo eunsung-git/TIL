@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let's predict 2020 KBO League!!!</title>
+    <style>
+        body {
+            width: 500px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding-top: 300px;
+		    background-image: url("../static/image/logo_bg.png");
+            background-repeat: repeat;}
+        div {
+		    display : block;
+		    margin : 0 auto;}
+        img { display: block; margin: 0px auto; }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="/sh_p" method="get">
+            <input type="text" width="20" height="20" placeholder="Hitter Name" name="hitter_name"><br>
+            <p><select name="hitter_record">
+                    <option selected="selected" value="Record_list2">Record_list2</option>
+                    <option value="AVG">AVG(타율)</option>
+                    <option value="G">G(경기)</option>
+                    <option value="PA">PA(타석)</option>
+                    <option value="AB">AB(타수)</option>
+                    <option value="R">R(득점)</option>
+                    <option value="H">H(안타)</option>
+                    <option value="2B">2B(2루타)</option>
+                    <option value="3B">3B(3루타)</option>
+                    <option value="HR">HR(홈런)</option>
+                    <option value="TB">TB(루타)</option>
+                    <option value="RBI">RBI(타점)</option>
+                    <option value="SAC">SAC(희생번트)</option>
+                    <option value="SF">SF(희생플라이)</option>
+                </select></p><br>
+{#            <input type="text" size=50 height=100 placeholder="Pitcher's Record" name=pitcher_record><br>#}
+            <input type='submit' value='Predict'>
+        </form>
+    </div>
+</body>
+</html>

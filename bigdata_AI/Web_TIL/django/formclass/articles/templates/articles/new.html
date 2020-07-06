@@ -6,9 +6,9 @@
 <h1>Article New</h1>
 
 <!-- action 안에 data를 보낼 주소 입력 -->
-<form action="" method="POST">
+<form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_p }}
     <!-- <label for="title">제목</label>
     <input id="title" type="text" name="title">
     <label for="content">내용</label>

@@ -1,34 +1,55 @@
 {% extends 'base.html' %}
 
+{% load static%}
+
 {% block body %}
 
 <h1>Article Detail</h1>
 
+<form action="{% url 'articles:like' article.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="{% if user in article.like_users.all %} UNLIKE {% else %} LIKE {% endif %}">
+</form>
+
+<p>
+    {{ article.like_users.all | length }} 명이 좋아합니다
+</p>
+
 <p>PK : {{ article.pk }}</p>
+<p>작성자 : {{ article.user.username }}</p>
 <p>제목 : {{ article.title }}</p>
 <p>내용 : {{ article.content }}</p>
+{% if article.image %}
+    <p>이미지 : <img src="{{ article.image.url }}" alt="{{ article.image }}"></p>
+{% endif %}
 <p>생성시각 : {{ article.created_at }}</p>
 <p>수정시각 : {{ article.updated_at }}</p>
 
 <a href="{% url 'articles:index' %}">index</a>
+
+{% if user == article.user %}
 <a href="{% url 'articles:edit' article.pk %}">edit</a>
 
 <form action="{% url 'articles:delete' article.pk %}" method="POST">
     {% csrf_token %}
     <input type="submit" value='delete'>
 </form>
+{% endif %}
 
 <!-- 댓글 목록 -->
 <h3>댓글 목록 ({{ article.comment_set.all|length }})</h3>
 <ul>
     {% for comment in article.comment_set.all %}
     <li>
-        {{ comment.content }} - {{ comment.created_at }}
+        {{ comment.user.username}} : {{ comment.content }} - {{ comment.created_at }}
+        
+        {% if user == article.user %}
         <a href="{% url 'articles:comments_edit' article.pk comment.pk %}">Edit</a>
         <form action="{% url 'articles:comments_delete' article.pk comment.pk %}" method="POST">
             {% csrf_token %}
             <input type="submit" value='delete'>
         </form>
+        {% endif %}
     </li>
     {% empty %}
     <li>
@@ -38,11 +59,13 @@
 </ul>
 
 <!-- 댓글 입력창 -->
+{% if user.is_authenticated %}
 <h3>댓글 입력</h3>
 <form action="{% url 'articles:comments_new' article.pk %}" method="POST">
     {% csrf_token %}
     {{ comment_form }}
     <input type="submit">
 </form>
+{% endif %}
 
 {% endblock %}

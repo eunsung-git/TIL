@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .whole {
+            position: relative;
+            margin: 0 auto;
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        .weather {
+            position: absolute;
+            margin: auto;
+        }
+        .recom_style {
+            display: table; 
+            margin-left: auto; 
+            margin-right: auto; 
+            display: inline-block;
+        }
+        body {
+            text-align: center;
+            overflow:scroll;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 전체 디자인 -->
+    <div class="whole"> 
+        
+        <!-- 날씨 data 띄우기 -->
+        <h2 style="font-size: 30px;">날씨 정보</h2>
+        <div class="weather" style="border: 1px solid black;">
+            <div style="width:250px; height:150px; border:1px solid black; float:left;">
+                <script src=""></script> 날씨정보 1
+            </div>
+
+            <div style="width:250px; height:150px; border:1px solid black; float:left;">
+                날씨정보2
+            </div>
+        </div>  <br><br><br><br><br><br><br>
+
+        <!-- 추천 style 띄우기 -->
+        <h2 style="font-size: 30px;">오늘 뭐 입지?</h2>
+            <div class= "recom_style" style="margin-right:60px; float:left;">
+                <div style="float:left;">
+                    <div style="width:350px; height:250px; border:1px solid red;">
+                    상의
+                    </div>
+                    <div style="width:350px; height:250px; border:1px solid green;">
+                    하의
+                    </div>
+                    <div style="width:350px; height:180px; border:1px solid violet;">
+                        신발
+                    </div>          
+                </div>
+
+                <div style="float:left;">
+                    <div style="width:300px; height:250px; border:1px solid red;">
+                        아우터
+                    </div>
+                    <div style="width:300px; height:250px; border:1px solid blue;">
+                        우산
+                    </div>
+                    <div style="width:300px; height:180px; border:1px solid green;">
+                        깍두기
+                    </div> 
+                </div>
+            </div>
+
+
+        <!-- 쇼핑몰 link 띄우기 -->
+            <div style="float:left;">
+                <div style="float: left;">
+                    <div style="width:150px; height:200px; border:1px solid black; ">
+                        <script src=""></script> 첫번째광고
+                    </div>
+                    <div style="width:150px; height:200px; border:1px solid black; ">
+                        두번째광고
+                    </div>
+                </div>
+        
+                <div style="float: left;">
+                    <div style="width:150px; height:200px; border:1px solid black; ">
+                    세번째광고
+                    </div>
+                    <div style="width:150px; height:200px; border:1px solid black; ">
+                    네번째광고
+                    </div>
+                </div>
+            </div>
+                
+
+        <!-- tip 띄우기 -->
+        
+        <!-- <div id="popup" style="color:black; position:absolute; text-align:center; bottom:100px; left:100px; width:50px; height:50px; background-color: chartreuse;">
+            <script src=""></script>
+        </div> -->
+
+        <!-- <input type="button" value="팝업창 호출" /><img src="" alt="submit"> -->
+        <button type="submit" onclick="showPopup();"><img src="">추천</button>
+
+        <script language="javascript">
+            function showPopup() { window.open("/pages/recom/tips/", "tips", "width=400, height=300, left=100, top=50"); }
+        </script>
+
+
+            
+
+    </div>
+    
+</body>
+</html>
+    
+

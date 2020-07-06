@@ -1,20 +1,36 @@
 from django.db import models
+from imagekit.models import ProcessedImageField
+from imagekit.processors import Thumbnail
+from django.conf import settings
 
 # Create your models here.
 
-# Form
+# user:Article = 1:N
+# Artlcie:Comment = 1:N
+# user:Comment = 1:N
+
 class Article(models.Model):
     title = models.CharField(max_length=10)
     content = models.TextField()
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_articles', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    # image = models.ImageField(blank=True)
+    image = ProcessedImageField(
+        blank=True,
+        processors=[Thumbnail(300,300),], # 가공 종류
+        format='JPEG', # 확장자
+        options={'quality':90,} # 확장자 옵션
+        )
 
-# 1:N Relation
 class Comment(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    
     # Article : Comment = 1:N
     # (부모) : (자식)
     
@@ -45,3 +61,12 @@ class Comment(models.Model):
     # article = comment.article
     # article.title
     # article.content
+
+
+# django Fixtures
+# 1. dumpdata
+# python manage.py dumpdata app이름.model이름 --indent=2 > article.json
+# 2. loaddata
+# python manage.py loaddata article.json
+# 3. csv -> fixtures
+# https://hpy.hk/c2f

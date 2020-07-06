@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let's predict 2020 KBO League!!!</title>
+    <style>
+        body {
+            width: 500px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding-top: 300px;
+            background: url("../static/image/logo_bg.png");
+            background-repeat: repeat;}
+        div {
+		    display : block;
+		    margin : 0 auto;}
+        img { display: block; margin: 0px auto; }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="/st" method="get">
+            <select name="team_name">
+                <option selected="selected" value="Team_list">Team_list</option>
+                <option value="두산">두산</option>
+                <option value="롯데">롯데</option>
+                <option value="삼성">삼성</option>
+                <option value="키움">키움</option>
+                <option value="한화">한화</option>
+                <option value="KIA">KIA</option>
+                <option value="KT">KT</option>
+                <option value="LG">LG</option>
+                <option value="NC">NC</option>
+                <option value="SK">SK</option>
+            </select> <br>
+            <select name="team_record">
+                <option selected="selected" value="Record_list">Record_list</option>
+                <option value="ERA">ERA(평균자책점)</option>
+                <option value="G">G(경기)</option>
+                <option value="W">W(승리)</option>
+                <option value="L">L(패배)</option>
+                <option value="SV">SV(세이브)</option>
+                <option value="HLD">HLD(홀드)</option>
+                <option value="WPCT">WPCT(승률)</option>
+                <option value="IP">IP(이닝)</option>
+                <option value="H">H(피안타)</option>
+                <option value="HR">HR(홈런)</option>
+                <option value="BB">BB(볼넷)</option>
+                <option value="HBP">HBP(사구)</option>
+                <option value="SO">SO(삼진)</option>
+                <option value="R">R(실점)</option>
+                <option value="ER">ER(자책점)</option>
+                <option value="WHIP">WHIP(이닝당 출루허용률)</option>
+            </select><br>
+            <input type='submit' value='Predict'>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 로그인한 상태에서 날짜, 지역 받고 recommendation 받기 -->
+    <h2>{{ member.pk }} 님</h2>
+
+    <div id="option">
+        <center>
+            <br><br><br><br><br>
+
+            <form action="{% url 'pages:recom' %}">
+                <fieldset style="width:300px; height: 200px;">
+
+                        <!-- 날짜 -->
+                        <span style="font-size: 20px;">날짜</span> 
+                        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                        <script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
+
+                        <script>
+                            $(function() {
+                                $( "#Datepicker" ).datepicker({
+                                    hangeMonth: true, 
+                                    changeYear: true,
+                                    nextText: '다음 달',
+                                    prevText: '이전 달',
+                                    minDate: 0, 
+                                    maxDate: "+9D",
+                                    dateFormat: "yy-mm-dd",
+                                });
+                            });
+                        </script>
+                        <input type="text" id="Datepicker">  <br><br>
+    
+                        <!-- 지역 : 회원가입 default -->
+                        <span style="font-size: 20px;">지역</span>   
+                        <select name="do" placeholder="도">
+                            <option value="도"></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+
+                        <select name="si" placeholder="시">
+                            <option value="시"></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+
+                        <select name="dong" placeholder="동">
+                            <option value="동"></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>  <br><br>
+                        
+                    <!-- 추천 버튼 대신 돋보기 버튼 -->
+                    <input type='submit' value='추천' style="width:60px; height: 40px; font-size: 20px;">
+
+                </fieldset>
+            </form>
+        </center>
+        
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <center>
+            <br><br><br><br><br>
+            <h1 style="font-size: 36px;">회원가입</h1> <br><br>
+
+            <form action="{% url 'pages:signup_comp' %}" method="POST">
+                {% csrf_token%}
+                <fieldset style="width:400px; height: 180px;">
+                    <legend style="font-size: 30px;">정보 입력</legend>
+
+                    <!-- <span style="font-size: 20px;">이름</span>   
+                    <input type = "text" name = "name"/><br><br> -->
+
+                    <span style="font-size: 20px;">ID</span>   
+                    <input type = "text" name = "id"/><br><br>
+
+                    <span style="font-size: 20px;">Password</span> 
+                    <input type = "password" name = "password"/><br><br>
+
+                    <!-- 지역 : 회원가입 default -->
+                    <span style="font-size: 20px;">지역</span>   
+                    <select name="do" placeholder="도">
+                        <option value="도"></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+
+                    <select name="si" placeholder="시">
+                        <option value="시"></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
+
+                    <select name="dong" placeholder="동">
+                        <option value="동"></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>  <br><br>
+                    
+                    <span style="font-size: 18px;">남</span> <input type="radio" name='gender'> 
+                    <span style="font-size: 18px;">여</span> <input type="radio" name="gender"> <br><br>
+
+                    <!-- 옷 파일 업로드 -->
+
+
+                    <!-- 추천 버튼 대신 돋보기 버튼 -->
+                    <input type="submit" name="signup_com" value="가입하기" style="width:100px; height: 50px; font-size: 20px;">
+                    
+                </fieldset>
+            </form>
+        </center>
+        
+    </div>
+</body>
+</html>

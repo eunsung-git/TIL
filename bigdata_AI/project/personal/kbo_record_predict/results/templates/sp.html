@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let's predict 2020 KBO League!!!</title>
+    <style>
+        body {
+            width: 500px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding-top: 300px;
+		    background-image: url("../static/image/logo_bg.png");
+            background-repeat: repeat;}
+        div {
+		    display : block;
+		    margin : 0 auto;}
+        img { display: block; margin: 0px auto; }
+    </style>
+</head>
+<body>
+    <div>
+        <form action="/sp" method="get">
+            <input type="text" width="20" height="20" placeholder="Pitcher Name" name="pitcher_name"><br>
+            <p><select name="pitcher_record">
+                <option selected="selected" value="Record_list">Record_list</option>
+                <option value="ERA" name="ERA">ERA(평균자책점)</option>
+                <option value="G" name="G">G(경기)</option>
+                <option value="W" name="W">W(승리)</option>
+                <option value="L" name="L">L(패배)</option>
+                <option value="SV" name="SV">SV(세이브)</option>
+                <option value="HLD" name="HLD">HLD(홀드)</option>
+                <option value="IP" name="IP">IP(이닝)</option>
+                <option value="H" name="H">H(피안타)</option>
+                <option value="HR" name="HR">HR(홈런)</option>
+                <option value="BB" name="BB">BB(볼넷)</option>
+                <option value="HBP" name="HBP">HBP(사구)</option>
+                <option value="SO" name="SO">SO(삼진)</option>
+                <option value="R" name="R">R(실점)</option>
+                <option value="ER" name="ER">ER(자책점)</option>
+                <option value="WHIP" name="WHIP">WHIP(이닝당 출루허용률)</option>
+            </select></p><br>
+{#            <input type="text" size=50 height=100 placeholder="Pitcher's Record" name=pitcher_record><br>#}
+            <input type='submit' value='Predict'>
+        </form>
+    </div>
+</body>
+</html>

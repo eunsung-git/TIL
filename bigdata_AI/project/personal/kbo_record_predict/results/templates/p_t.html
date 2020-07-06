@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Let's predict 2020 KBO League!!!</title>
+    <style>
+        body {
+            width: 500px;
+            height: 100px;
+            margin-bottom: 15px;
+            background-image: url("../static/image/logo_bg.png");
+            background-repeat: repeat;
+            align-items:center;}
+        img {
+            display: block;
+            margin: 0px auto;
+            vertical-align:middle;}
+        div {
+		    display : block;
+		    margin : 0 auto;}
+    </style>
+</head>
+<body>
+    <p>
+        <img src="../static/image/sol_kbo_2020_logo.png" width="500" height="500" alt="사진">
+    </p>
+    <p>
+        <div>
+            <form action="/p_t" method="get">
+                <select name="category_sel">
+                    <option selected="selected" value="Category">Category</option>
+                    <optgroup label="Pitcher">
+                        <option value="p_player">p_player</option>
+                        <option value="p_team">p_team</option>
+                    </optgroup>
+                    <optgroup label="Hitter">
+                        <option value="h_player">h_player</option>
+                        <option value="h_team">h_team</option>
+                    </optgroup>
+                </select>
+                <br>
+                <input type="submit" value="Find" style="submit-align:center" width="20" height="10">
+            </form>
+        </div>
+    </p>
+</body>
+</html>

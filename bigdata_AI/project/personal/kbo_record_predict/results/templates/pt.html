@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ teamname }}_{{teamrec}}</title>
+    <style>
+        body {
+            width: 500px;
+            height: 100px;
+            margin-bottom: 15px;
+            padding-top: 300px;
+            background-image: url("../static/image/logo_bg.png");
+            background-repeat: repeat}
+        img {
+            display: block;
+            margin: 0px auto; }
+    </style>
+</head>
+
+<body>
+{#        <img src="{{url_for('static', filename='pred_team/{{ teamname }}_{{ teamrec }}_2020.png')}}" alt="그래프">#}
+    <img src="../static/pred_team/pitcher/{{ teamname }}_{{ teamrec }}_2020.png" width="800" height="500" alt="그래프">
+
+</body>
+</html>

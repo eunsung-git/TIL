@@ -1,0 +1,178 @@
+[
+{
+  "model": "articles.article",
+  "pk": 1,
+  "fields": {
+    "title": "\uccab\ubc88\uc9f8",
+    "content": "\uc9d1\uc5d0 \uac00\uace0 \uc2f6\ub2e4",
+    "created_at": "2020-06-16T01:26:06.581Z",
+    "updated_at": "2020-06-17T05:23:20.710Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 2,
+  "fields": {
+    "title": "\ub450\ubc88\uc9f8",
+    "content": "\uac11\uc790\uae30 \uc878\ub9ac\ub2e4\r\n\uc9d1\uc5d0\ub294 \uc5b8\uc81c \uac00\uc9c0?",
+    "created_at": "2020-06-16T01:51:33.548Z",
+    "updated_at": "2020-06-16T06:22:08.831Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 3,
+  "fields": {
+    "title": "\uc138\ubc88\uc9f8",
+    "content": "\uc5b4\uc81c \uba39\uc740 \uce58\ud0a8\uc740 \uc815\ub9d0 \ub9db\uc774 \uc5c5\uc5c8\ub530",
+    "created_at": "2020-06-16T01:53:55.103Z",
+    "updated_at": "2020-06-16T01:53:55.103Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 4,
+  "fields": {
+    "title": "\ub124\ubc88\uc9f8",
+    "content": "\uc810\uc2ec\uc2dc\uac04\uc5d0 \ub098\uac00\uc57c \ud574",
+    "created_at": "2020-06-16T02:23:07.232Z",
+    "updated_at": "2020-06-16T02:23:07.232Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 5,
+  "fields": {
+    "title": "\ub2e4\uc12f\ubc88\uc9f8",
+    "content": "\uad6c\ubbf8\uad6c\ubbf8 \uc2dc\ud2b8\ub7ec\uc2a4 \ub9db",
+    "created_at": "2020-06-16T02:32:48.016Z",
+    "updated_at": "2020-06-16T02:32:48.016Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 6,
+  "fields": {
+    "title": "\uc5ec\uc12f\ubc88\uc9f8",
+    "content": "\ubc16\uc5d0 \ub354\uc6b0\ub824\ub098?",
+    "created_at": "2020-06-16T02:34:24.832Z",
+    "updated_at": "2020-06-16T02:34:24.832Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 7,
+  "fields": {
+    "title": "\uc77c\uacf1\ubc88\uc9f8",
+    "content": "\ub365\ub2e4\ub354\uc6cc",
+    "created_at": "2020-06-16T04:37:08.924Z",
+    "updated_at": "2020-06-16T06:22:29.217Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 8,
+  "fields": {
+    "title": "\uc5ec\ub35f\ubc88\uc9f8",
+    "content": "\ud504\ub85c\uc81d\ud2b8",
+    "created_at": "2020-06-16T04:38:29.463Z",
+    "updated_at": "2020-06-16T04:38:29.463Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 9,
+  "fields": {
+    "title": "\uc544\ud649\ubc88\uc9f8",
+    "content": "\uc6b0\uc624\uc624\uc624\uc624 \uc2e0\uae30\ubc29\uae30",
+    "created_at": "2020-06-16T04:48:14.534Z",
+    "updated_at": "2020-06-16T04:48:14.534Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 13,
+  "fields": {
+    "title": "\uc5f4\uc138\ubc88\uc9f8",
+    "content": "\ub9cc\ub4e4 \uc218 \uc788\uc744\uae4c",
+    "created_at": "2020-06-16T06:31:39.789Z",
+    "updated_at": "2020-06-16T06:31:48.018Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 14,
+  "fields": {
+    "title": "\uc5f4\ub124\ubc88\uc9f8",
+    "content": "\u3134\u3147\u3139\u3134\u3147\u314e",
+    "created_at": "2020-06-16T06:39:44.795Z",
+    "updated_at": "2020-06-16T06:39:44.796Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 15,
+  "fields": {
+    "title": "\uc5f4\ub2e4\uc12f\ubc88\uc9f8",
+    "content": "\uc815\ub300\uc4f0",
+    "created_at": "2020-06-22T00:52:00.807Z",
+    "updated_at": "2020-06-22T00:52:00.807Z",
+    "image": ""
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 16,
+  "fields": {
+    "title": "\uc5f4\uc5ec\uc12f\ubc88\uc9f8",
+    "content": "\ubc30\uace0\ud504\ub2e4",
+    "created_at": "2020-06-22T01:19:57.986Z",
+    "updated_at": "2020-06-22T01:19:57.986Z",
+    "image": "branch_scenario.png"
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 17,
+  "fields": {
+    "title": "\uc5f4\uc77c\uacf1\ubc88\uc9f8",
+    "content": "\ubc1c\ud560\ub77c",
+    "created_at": "2020-06-22T01:34:05.014Z",
+    "updated_at": "2020-06-22T01:34:05.014Z",
+    "image": "\uc815\ub300\uc4f0.jpg"
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 18,
+  "fields": {
+    "title": "\uc5f4\uc5ec\ub35f\ubc88\uc9f8",
+    "content": "\uc878\ub824",
+    "created_at": "2020-06-22T01:46:31.206Z",
+    "updated_at": "2020-06-22T01:46:31.206Z",
+    "image": "\uc815\ub300\uc4f0_8KCoVYJ.jpg"
+  }
+},
+{
+  "model": "articles.article",
+  "pk": 19,
+  "fields": {
+    "title": "\uc5f4\uc544\ud649\ubc88\uc9f8",
+    "content": "\uc774\ubbf8\uc9c0 \uac00\uacf5",
+    "created_at": "2020-06-22T02:26:25.886Z",
+    "updated_at": "2020-06-22T02:26:25.886Z",
+    "image": "\uc815\ub300\uc4f0_WnqIy3O.jpg"
+  }
+}
+]

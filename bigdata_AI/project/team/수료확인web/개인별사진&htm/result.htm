@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ namedata }}</title>
+
+</head>
+
+<style>
+    body {background-color: black;}
+    h1 {color: white;}
+    p {color: blue;}
+  </style>
+<h1 style="font-size:60px;">{{ namedata }}</h1><br>
+<body>
+<script>
+    var str = 'image/{{ namedata }}.png';
+</script>
+    <img src="http://127.0.0.1:5000/static/image/{{ namedata }}.png" alt="길상희그래프" width="500" height="500">
+    <img src="{{url_for('static', filename='image/추카추카.png')}}" alt="길상희그래프" width="600" height="500">
+
+</body>
+</html>

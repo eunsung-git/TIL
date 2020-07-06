@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="option">
+        <center>
+            <br><br><br><br><br>
+            <h1 align="center" style="font-size: 45px;">"오늘 뭐 입지?"</h1> <br><br>
+
+            <fieldset style="width:400px; height: 220px;">
+                <form action="{% url 'pages:login_sel' %}">  
+                    <span style="font-size: 20px;">ID</span>   
+                    <input type = "text" name = "id"/><br><br>
+
+                    <span style="font-size: 20px;">Password</span> 
+                    <input type = "password" name = "password"/><br><br>
+                    
+                    <!-- 추천 버튼 대신 돋보기 버튼 -->
+                    <input type='submit' name="login" value='로그인' style="width:80px; height: 50px; font-size: 20px;">
+                    <input type="submit" name="signup" value="회원가입" style="width:100px; height: 50px; font-size: 20px;">
+                    <br><br>
+                </form>
+
+                <form action="{% url 'pages:non_sel' %}">
+                    <!-- 비회원 이용하기 -->
+                    <input type='submit' name="non_member" value='비회원 이용하기' style="width:180px; height: 50px; font-size: 20px;">
+                </form>
+                
+            </fieldset>
+            
+        </center>
+        
+    </div>
+
+
+
+</body>
+</html>
