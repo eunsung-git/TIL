@@ -1,0 +1,48 @@
+--DROP TABLE STUDENT PURGE ;
+
+CREATE TABLE STUDENT
+(ID      NUMBER(2),
+ NAME    VARCHAR2(9), 
+ EMAIL   VARCHAR2(30), 
+ PHONE   CHAR(13)) ; 
+ 
+INSERT INTO STUDENT VALUES (1,'이준호','vjhlcoz@daum.net','010-4826-1948');
+INSERT INTO STUDENT VALUES (2,'강민주','bfjcy@naver.com','010-5624-3215');
+INSERT INTO STUDENT VALUES (3,'오주한','aposex@gmail.com','010-1259-8394');
+INSERT INTO STUDENT VALUES (4,'이은성','qyjrcl@nate.com','010-1542-6332');
+INSERT INTO STUDENT VALUES (5,'백승민','vbwgb@naver.com','010-1094-8294');
+INSERT INTO STUDENT VALUES (6,'정인하','jlqlqo@naver.com','010-9950-8901');
+INSERT INTO STUDENT VALUES (7,'한지현','rnbaab@gmail.com','010-1700-4614');
+INSERT INTO STUDENT VALUES (8,'권우철','bwoii@naver.com','010-5893-7300');
+INSERT INTO STUDENT VALUES (9,'김수지','jszrux@gmail.com','010-5683-4188');
+INSERT INTO STUDENT VALUES (10,'양귀재','xgykz@naver.com','010-2020-8820');
+INSERT INTO STUDENT VALUES (11,'양채현','miidtr@naver.com','010-4716-4290');
+INSERT INTO STUDENT VALUES (12,'최수림','ozkng@gmail.com','010-4400-8160');
+INSERT INTO STUDENT VALUES (13,'나해린','gasfmwy@naver.com','010-6412-9910');
+INSERT INTO STUDENT VALUES (14,'김동익','azufi@nate.com','010-9519-8283');
+INSERT INTO STUDENT VALUES (15,'김윤아','yvtljnq@naver.com','010-9490-7104');
+INSERT INTO STUDENT VALUES (16,'조민호','wnnmy@gmail.com','010-5580-5992');
+INSERT INTO STUDENT VALUES (17,'우성호','bduiu@nate.com','010-5808-3549');
+INSERT INTO STUDENT VALUES (18,'김효준','ekofk@naver.com','010-6550-6640');
+INSERT INTO STUDENT VALUES (19,'성채윤','lndxfd@naver.com','010-2908-6720');
+INSERT INTO STUDENT VALUES (20,'안정민','muypfnw@gmail.com','010-6703-5528');
+INSERT INTO STUDENT VALUES (21,'은경혜','lpqiyw@naver.com','010-9430-8655');
+INSERT INTO STUDENT VALUES (22,'정다은','mtkhar@nate.com','010-1938-5745');
+INSERT INTO STUDENT VALUES (23,'오대남','uwkpog@naver.com','010-1932-6957');
+INSERT INTO STUDENT VALUES (24,'이인호','inntr@naver.com','010-5157-4726');
+
+COMMIT ;
+
+SELECT * FROM STUDENT ;
+
+----------
+
+SELECT ID
+    ,REPLACE(NAME,SUBSTR(NAME,2,1),'*') NAME
+    ,SUBSTR(EMAIL,1,INSTR(EMAIL,'@')-1) EMAIL
+    ,REPLACE(PHONE,substr(PHONE,-4),'****') PHOME
+FROM STUDENT;
+
+SELECT EMAIL
+    ,SUBSTR(EMAIL,INSTR(EMAIL,'@')+1) DOMAIN
+FROM STUDENT;
